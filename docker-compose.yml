@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  timesphere:
+    image: timesphere:latest
+    build: .
+    container_name: timesphere
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config.yaml:/etc/timesphere/config.yaml:ro
+      - timesphere-data:/storage
+    environment:
+      - TZ=UTC
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=64m
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - timesphere-net
+
+volumes:
+  timesphere-data:
+    driver: local
+
+networks:
+  timesphere-net:
+    driver: bridge
