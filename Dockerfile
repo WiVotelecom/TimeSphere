@@ -38,7 +38,7 @@ RUN mkdir -p /storage /etc/timesphere && \
     chown -R timesphere:timesphere /app /storage /etc/timesphere
 
 # Copy default config if exists
-COPY --chown=timesphere:timesphere config.yaml.example /etc/timesphere/config.yaml 2>/dev/null || true
+COPY --chown=timesphere:timesphere config.yaml.example /etc/timesphere/config.yaml
 
 USER timesphere
 
