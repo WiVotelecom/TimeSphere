@@ -29,14 +29,14 @@ TimeSphere is a comprehensive NTP (Network Time Protocol) monitoring tool that h
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/timesphere.git
-cd timesphere
+git clone https://github.com/WiVotelecom/TimeSphere.git
+cd TimeSphere
 
 # Copy and customize configuration
 cp config.yaml.example config.yaml
 
 # Start with Docker Compose
-docker-compose up -d
+docker compose up -d
 
 # Access the dashboard
 open http://localhost:8080
