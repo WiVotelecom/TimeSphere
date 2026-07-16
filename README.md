@@ -59,7 +59,7 @@ docker run -d \
 # Prerequisites: Go 1.19+, GCC, musl-dev
 
 # Clone and build
-git clone https://github.com/your-org/timesphere.git
+git clone https://github.com/WiVotelecom/TimeSphere.git
 cd timesphere
 
 # Download dependencies
