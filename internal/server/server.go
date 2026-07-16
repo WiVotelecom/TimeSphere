@@ -319,8 +319,7 @@ func (s *Server) handleRoot(w http.ResponseWriter, r *http.Request) {
 	userAgent := r.Header.Get("User-Agent")
 
 	isBrowser := strings.Contains(acceptHeader, "text/html") ||
-		strings.Contains(userAgent, "Mozilla") ||
-		r.Method == "GET" && !strings.Contains(acceptHeader, "application/json")
+		strings.Contains(userAgent, "Mozilla")
 
 	if isBrowser {
 		s.handleDashboard(w, r)
