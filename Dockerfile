@@ -21,8 +21,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o timesphere ./cmd/times
 # Runtime stage
 FROM alpine:3.21
 
-# Install CA certificates for HTTPS
-RUN apk --no-cache add ca-certificates tzdata
+# Configure Alpine repositories and install CA certificates for HTTPS
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
+    apk --no-cache add ca-certificates tzdata
 
 # Create non-root user
 RUN addgroup -g 1000 timesphere && \
