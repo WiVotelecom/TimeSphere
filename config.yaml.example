@@ -1,0 +1,65 @@
+# TimeSphere Configuration
+# Copy to /etc/timesphere/config.yaml
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+  read_timeout: 15
+  write_timeout: 15
+  shutdown_timeout: 30
+
+# NTP Servers to monitor
+servers:
+  - name: "pool.ntp.org"
+    address: "pool.ntp.org"
+    port: 123
+    enabled: true
+  - name: "time.google.com"
+    address: "time.google.com"
+    port: 123
+    enabled: true
+
+# Alerting thresholds
+thresholds:
+  offset_ms: 20
+  jitter_ms: 10
+  poll_interval: 64
+  reach_timeout: 3
+
+# UI settings
+ui:
+  title: "TimeSphere"
+  dark_mode: true
+  refresh_rate: 1
+
+# Authentication (optional)
+auth:
+  enabled: false
+  username: "admin"
+  password: "changeme"
+
+# TLS (optional)
+tls:
+  enabled: false
+  cert_file: ""
+  key_file: ""
+
+# History storage
+history:
+  enabled: true
+  sample_rate_1h: 10
+
+# Alerting (optional)
+alerting:
+  enabled: false
+  webhook: ""
+
+# Auto-discovery (optional)
+discovery:
+  enabled: false
+  cidrs: []
+
+# Logging
+logging:
+  level: "info"
+  format: "json"
