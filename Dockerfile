@@ -1,7 +1,7 @@
 # TimeSphere - Enterprise Time Monitoring
 # Single container, minimal footprint
 
-FROM golang:1.19-alpine AS builder
+FROM golang:1.21-alpine AS builder
 
 WORKDIR /build
 
@@ -19,7 +19,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o timesphere ./cmd/timesphere
 
 # Runtime stage
-FROM alpine:3.18
+FROM alpine:3.21
 
 # Install CA certificates for HTTPS
 RUN apk --no-cache add ca-certificates tzdata
