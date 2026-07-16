@@ -119,7 +119,7 @@ func QueryNTP(address string, port int, timeout time.Duration) (*ServerStatus, e
 
 	// Calculate offset and delay using standard NTP formulas
 	t1 := now                        // Client transmit time
-	t2 := refTime                    // Server receive time (approximate)
+	t2 := ntpToTime(resp.RxTimeSec, resp.RxTimeFrac) // Server receive time
 	t3 := txTime                     // Server transmit time
 	t4 := rxTime                     // Client receive time
 
